@@ -10,12 +10,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
-@SpringBootApplication
+//@SpringBootApplication
 public class SpringbootDemoApplication implements ApplicationRunner {
 
 	Logger logger = LoggerFactory.getLogger(SpringbootDemoApplication.class);
-	@Autowired
-	RestTemplate restTemplate;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootDemoApplication.class, args);
