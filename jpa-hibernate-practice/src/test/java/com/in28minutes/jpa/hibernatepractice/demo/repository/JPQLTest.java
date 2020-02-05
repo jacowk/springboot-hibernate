@@ -43,6 +43,20 @@ public class JPQLTest {
 	}
 	
 	@Test
+	public void jpqlNamedQueryTestCase() {
+		List resultList = em.createNamedQuery("query_get_all_courses").getResultList();
+		logger.info("Named query: query_get_all_courses -> {}", resultList);
+		//Select c From Course c -> [Course [name=Web Services in 100 Steps], Course [name=Angular JS in 100 Steps - Updated], Course [name=JPA in 50 Steps], Course [name=Spring in 50 Steps], Course [name=Spring Boot in 100 Steps]]
+	}
+	
+	@Test
+	public void jpqlNamedQuery100StepTestCase() {
+		List resultList = em.createNamedQuery("query_get_100_step_courses").getResultList();
+		logger.info("Named query: query_get_100_step_courses -> {}", resultList);
+		//Select c From Course c -> [Course [name=Web Services in 100 Steps], Course [name=Angular JS in 100 Steps - Updated], Course [name=JPA in 50 Steps], Course [name=Spring in 50 Steps], Course [name=Spring Boot in 100 Steps]]
+	}
+	
+	@Test
 	public void jpqlTypedTestCase() {
 		TypedQuery<Course> query = em.createQuery("Select c From Course c", Course.class);
 		List<Course> resultList = query.getResultList();
