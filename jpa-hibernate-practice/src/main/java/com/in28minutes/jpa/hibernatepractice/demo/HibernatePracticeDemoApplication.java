@@ -7,8 +7,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.in28minutes.jpa.hibernatepractice.demo.entity.Course;
 import com.in28minutes.jpa.hibernatepractice.demo.repository.CourseRepository;
+import com.in28minutes.jpa.hibernatepractice.demo.repository.StudentRepository;
 
 /**
  * 
@@ -24,19 +24,24 @@ public class HibernatePracticeDemoApplication implements CommandLineRunner{
 	@Autowired
 	private CourseRepository courseRepository;
 	
+	@Autowired
+	private StudentRepository studentRepository;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(HibernatePracticeDemoApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
+		studentRepository.saveStudentWithPassport();
+		
 //		Course course = courseRepository.findById(10001L);
 //		logger.info("Course 10001 -> {}", course);
 //		
 ////		courseRepository.deleteById(10001L);
 //		
 //		courseRepository.save(new Course("Microservices in 100 Steps"));
-		courseRepository.playWithEntityManager();
+//		courseRepository.playWithEntityManager();
 	}
 
 }

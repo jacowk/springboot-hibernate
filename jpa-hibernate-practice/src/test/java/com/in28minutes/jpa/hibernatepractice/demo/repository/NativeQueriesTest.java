@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -47,6 +48,12 @@ private Logger logger = LoggerFactory.getLogger(this.getClass());
 		logger.info("select * from course where id = :id -> {}", resultList);
 	}
 	
-	//Continue 4:30
+	@Test
+	@Transactional
+	public void nativeQueriesToUpdateTestCase() {
+		Query query = em.createNativeQuery("update course set last_updated_date = sysdate()", Course.class);
+		int noOfRowsUpdated = query.executeUpdate();
+		logger.info("noOfRowsUpdated -> {}", noOfRowsUpdated);
+	}
 	
 }
