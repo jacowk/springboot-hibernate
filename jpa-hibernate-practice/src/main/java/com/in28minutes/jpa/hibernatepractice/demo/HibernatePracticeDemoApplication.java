@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.in28minutes.jpa.hibernatepractice.demo.entity.Review;
 import com.in28minutes.jpa.hibernatepractice.demo.repository.CourseRepository;
 import com.in28minutes.jpa.hibernatepractice.demo.repository.StudentRepository;
 
@@ -33,7 +34,7 @@ public class HibernatePracticeDemoApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		studentRepository.saveStudentWithPassport();
+//		studentRepository.saveStudentWithPassport();
 		
 //		Course course = courseRepository.findById(10001L);
 //		logger.info("Course 10001 -> {}", course);
@@ -42,6 +43,9 @@ public class HibernatePracticeDemoApplication implements CommandLineRunner{
 //		
 //		courseRepository.save(new Course("Microservices in 100 Steps"));
 //		courseRepository.playWithEntityManager();
+		
+		courseRepository.addReviewsForCourse();
+		
 	}
 
 }
