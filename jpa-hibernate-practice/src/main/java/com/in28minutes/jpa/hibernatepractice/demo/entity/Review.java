@@ -23,6 +23,7 @@ public class Review {
 
 	public Review(String rating, String description) {
 		super();
+		this.rating = rating;
 		this.description = description;
 	}
 

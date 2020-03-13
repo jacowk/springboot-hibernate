@@ -1,5 +1,7 @@
 package com.in28minutes.jpa.hibernatepractice.demo.repository;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
@@ -113,7 +115,7 @@ public class CourseRepository {
 		course2.setName("JPA in 50 Steps - Updated");
 	}
 	
-	public void addReviewsForCourse() {
+	public void addHardcodedReviewsForCourse() {
 		//get the course 10003
 		Course course = findById(10003L);
 		logger.info("course.getReviews() -> {}", course.getReviews());
@@ -121,6 +123,8 @@ public class CourseRepository {
 		//add 2 reviews to it
 		Review review1 = new Review("5", "Great Hands-on Stuff.");
 		Review review2 = new Review("5", "Hatsoff.");
+		
+		//setting the relationship
 		course.addReview(review1);
 		review1.setCourse(course); /* This step is also required */
 		
@@ -128,8 +132,27 @@ public class CourseRepository {
 		review2.setCourse(course); /* This step is also required */
 		
 		//save it to the database
+		em.persist(review1);
+		em.persist(review2);
 		
+	}
+	
+	/* Generalized method */
+	/*
+	 * Get some
+	 */
+	public void addReviewsForCourse(Long courseId, List<Review> reviews) {
+		Course course = findById(courseId);
+		logger.info("course.getReviews() -> {}", course.getReviews());
 		
+		for (Review review: reviews) {
+			//setting the relationship
+			course.addReview(review);
+			review.setCourse(course); /* This step is also required */
+			
+			//save it to the database
+			em.persist(review);
+		}
 	}
 
 }

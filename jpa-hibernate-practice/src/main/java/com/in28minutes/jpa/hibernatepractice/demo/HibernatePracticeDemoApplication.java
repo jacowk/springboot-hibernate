@@ -1,5 +1,8 @@
 package com.in28minutes.jpa.hibernatepractice.demo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,8 +47,12 @@ public class HibernatePracticeDemoApplication implements CommandLineRunner{
 //		courseRepository.save(new Course("Microservices in 100 Steps"));
 //		courseRepository.playWithEntityManager();
 		
-		courseRepository.addReviewsForCourse();
+//		courseRepository.addHardcodedReviewsForCourse();
 		
+		List<Review> reviews = new ArrayList<>();
+		reviews.add(new Review("5", "Great Hands-on Stuff."));
+		reviews.add(new Review("5", "Hatsoff."));
+		courseRepository.addReviewsForCourse(10003L, reviews);
 	}
 
 }
