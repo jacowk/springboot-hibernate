@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
@@ -30,7 +31,8 @@ public class Course {
 	@Column(nullable = false)
 	private String name;
 	
-	@OneToMany(mappedBy="course")
+	//@OneToMany(mappedBy="course", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="course") /* The default fetch strategy is lazy. Prefer LAZY fetch strategy. */
 	private List<Review> reviews = new ArrayList<>();
 	
 	@UpdateTimestamp

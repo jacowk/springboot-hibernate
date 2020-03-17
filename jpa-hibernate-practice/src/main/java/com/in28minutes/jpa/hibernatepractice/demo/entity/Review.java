@@ -5,6 +5,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+
+/*
+ * JPA Relationships
+ * =================
+ * 
+ * Any relationship ending in One, is eager loading, e.g. @OneToOne, @ManyToOne
+ * Any relationship ending in Many, is lazy loading, e.g. @OneToMany, @ManyToMany
+ * 
+ */
 @Entity
 public class Review {
 
@@ -14,7 +23,7 @@ public class Review {
 	private String rating;
 	private String description;
 	
-	@ManyToOne
+	@ManyToOne /* Default eager fetching */
 	private Course course;
 	
 	public Review() {
