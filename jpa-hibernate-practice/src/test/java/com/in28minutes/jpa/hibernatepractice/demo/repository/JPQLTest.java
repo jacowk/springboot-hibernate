@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.in28minutes.jpa.hibernatepractice.demo.HibernatePracticeDemoApplication;
+import com.in28minutes.jpa.hibernatepractice.demo.DemoApplication;
 import com.in28minutes.jpa.hibernatepractice.demo.entity.Course;
 
 /**
@@ -27,7 +27,7 @@ import com.in28minutes.jpa.hibernatepractice.demo.entity.Course;
  *
  */
 @RunWith(SpringRunner.class) /* Creates a SpringBoot context */
-@SpringBootTest(classes=HibernatePracticeDemoApplication.class)
+@SpringBootTest(classes=DemoApplication.class)
 public class JPQLTest {
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());

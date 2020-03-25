@@ -1,5 +1,7 @@
 package com.in28minutes.jpa.hibernatepractice.demo;
 
+import java.math.BigDecimal;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,9 +9,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.in28minutes.jpa.hibernatepractice.demo.entity.Course;
-import com.in28minutes.jpa.hibernatepractice.demo.entity.Student;
+import com.in28minutes.jpa.hibernatepractice.demo.entity.Employee;
+import com.in28minutes.jpa.hibernatepractice.demo.entity.FullTimeEmployee;
+import com.in28minutes.jpa.hibernatepractice.demo.entity.PartTimeEmployee;
 import com.in28minutes.jpa.hibernatepractice.demo.repository.CourseRepository;
+import com.in28minutes.jpa.hibernatepractice.demo.repository.EmployeeRepository;
 import com.in28minutes.jpa.hibernatepractice.demo.repository.StudentRepository;
 
 /**
@@ -28,7 +32,7 @@ import com.in28minutes.jpa.hibernatepractice.demo.repository.StudentRepository;
  * 
  */
 @SpringBootApplication
-public class HibernatePracticeDemoApplication implements CommandLineRunner{
+public class DemoApplication implements CommandLineRunner{
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
@@ -38,8 +42,11 @@ public class HibernatePracticeDemoApplication implements CommandLineRunner{
 	@Autowired
 	private StudentRepository studentRepository;
 	
+	@Autowired
+	private EmployeeRepository employeeRepository;
+	
 	public static void main(String[] args) {
-		SpringApplication.run(HibernatePracticeDemoApplication.class, args);
+		SpringApplication.run(DemoApplication.class, args);
 	}
 
 	@Override
@@ -62,8 +69,13 @@ public class HibernatePracticeDemoApplication implements CommandLineRunner{
 //		courseRepository.addReviewsForCourse(10003L, reviews);
 		
 		//studentRepository.insertHardcodedStudentAndCourse();
-		studentRepository.insertStudentAndCourse(new Student("Jack"), 
-				new Course("Microservices in 100 Steps"));
+//		studentRepository.insertStudentAndCourse(new Student("Jack"), 
+//				new Course("Microservices in 100 Steps"));
+	
+		employeeRepository.insert(new FullTimeEmployee("Jack", new BigDecimal("10000")));
+		employeeRepository.insert(new PartTimeEmployee("Jill", new BigDecimal("50")));
+		
+		logger.info("All Employees -> {}", employeeRepository.retrieveAllEmployees());
 	}
 
 }

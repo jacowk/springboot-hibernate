@@ -15,7 +15,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.in28minutes.jpa.hibernatepractice.demo.HibernatePracticeDemoApplication;
+import com.in28minutes.jpa.hibernatepractice.demo.DemoApplication;
 import com.in28minutes.jpa.hibernatepractice.demo.entity.Course;
 import com.in28minutes.jpa.hibernatepractice.demo.entity.Review;
 
@@ -30,7 +30,7 @@ import com.in28minutes.jpa.hibernatepractice.demo.entity.Review;
  *
  */
 @RunWith(SpringRunner.class) /* Creates a SpringBoot context */
-@SpringBootTest(classes=HibernatePracticeDemoApplication.class)
+@SpringBootTest(classes=DemoApplication.class)
 public class CourseRepositoryTest {
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
