@@ -6,9 +6,9 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -35,12 +35,15 @@ public class Course {
 	@OneToMany(mappedBy="course") /* The default fetch strategy is lazy. Prefer LAZY fetch strategy. */
 	private List<Review> reviews = new ArrayList<>();
 	
+	@ManyToMany (mappedBy="courses")
+	private List<Student> students = new ArrayList<>();
+	
 	@UpdateTimestamp
 	@Column(name = "last_updated_date")
 	private LocalDateTime lastUpatedDate;
 	@CreationTimestamp
 	@Column(name = "created_date")
-	private LocalDateTime createdDate; 
+	private LocalDateTime createdDate;
 	
 	public Course() {
 		super();
@@ -73,6 +76,14 @@ public class Course {
 	
 	public void removeReview(Review review) {
 		this.reviews.remove(review);
+	}
+
+	public List<Student> getStudents() {
+		return students;
+	}
+
+	public void addStudent(Student student) {
+		this.students.add(student);
 	}
 
 	@Override

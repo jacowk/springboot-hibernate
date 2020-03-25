@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.in28minutes.jpa.hibernatepractice.demo.entity.Course;
 import com.in28minutes.jpa.hibernatepractice.demo.entity.Passport;
 import com.in28minutes.jpa.hibernatepractice.demo.entity.Student;
 
@@ -66,6 +67,35 @@ public class StudentRepository {
 		//Database Operation 4 - Update student
 		student.setName("Ranga - updated");
 		//Persistence Context contains (student++, passport++)
+	}
+	
+	/* Persisting a ManyToMany relationship */
+	public void insertHardcodedStudentAndCourse() {
+		Student student = new Student("Jack");
+		Course course = new Course("Microservices in 100 Steps");
+		em.persist(student);
+		em.persist(course);
+		
+		/* Establish a relationship between student and course */
+		student.addCourse(course);
+		course.addStudent(student);
+		
+		/* Persist the relationship by persisting the owning side, which is student */
+		em.persist(student);
+	}
+	
+	public void insertStudentAndCourse(Student student, Course course) {
+		//Student student = new Student("Jack");
+		//Course course = new Course("Microservices in 100 Steps");
+		em.persist(student);
+		em.persist(course);
+		
+		/* Establish a relationship between student and course */
+		student.addCourse(course);
+		course.addStudent(student);
+		
+		/* Persist the relationship by persisting the owning side, which is student */
+		em.persist(student);
 	}
 
 }
