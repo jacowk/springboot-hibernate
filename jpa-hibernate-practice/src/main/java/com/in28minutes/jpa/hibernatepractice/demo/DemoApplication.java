@@ -30,6 +30,10 @@ import com.in28minutes.jpa.hibernatepractice.demo.repository.StudentRepository;
  * @ManyToOne and @OneToOne relationships always have a fetch type of eager (Ending with One)
  * @OneToMany and @ManyToMany relationships always have a fetch type of lazy (Ending with Many)
  * 
+ * Inheritance Types: Single Table with DiscriminatorColumn, Table Per Class, Joined
+ * MappedSuperclass with no Inheritance type
+ * Employee, FullTimeEmployee, PartTimeEmployee
+ * 
  */
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner{
@@ -75,7 +79,9 @@ public class DemoApplication implements CommandLineRunner{
 		employeeRepository.insert(new FullTimeEmployee("Jack", new BigDecimal("10000")));
 		employeeRepository.insert(new PartTimeEmployee("Jill", new BigDecimal("50")));
 		
-		logger.info("All Employees -> {}", employeeRepository.retrieveAllEmployees());
+//		logger.info("All Employees -> {}", employeeRepository.retrieveAllEmployees());
+		logger.info("Full Time Employees -> {}", employeeRepository.retrieveFullTimeEmployees());
+		logger.info("Part Time Employees -> {}", employeeRepository.retrievePartTimeEmployees());
 	}
 
 }
