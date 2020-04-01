@@ -9,7 +9,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.in28minutes.jpa.hibernatepractice.demo.entity.Employee;
 import com.in28minutes.jpa.hibernatepractice.demo.entity.FullTimeEmployee;
 import com.in28minutes.jpa.hibernatepractice.demo.entity.PartTimeEmployee;
 import com.in28minutes.jpa.hibernatepractice.demo.repository.CourseRepository;
@@ -76,12 +75,12 @@ public class DemoApplication implements CommandLineRunner{
 //		studentRepository.insertStudentAndCourse(new Student("Jack"), 
 //				new Course("Microservices in 100 Steps"));
 	
-		employeeRepository.insert(new FullTimeEmployee("Jack", new BigDecimal("10000")));
-		employeeRepository.insert(new PartTimeEmployee("Jill", new BigDecimal("50")));
-		
-//		logger.info("All Employees -> {}", employeeRepository.retrieveAllEmployees());
-		logger.info("Full Time Employees -> {}", employeeRepository.retrieveFullTimeEmployees());
-		logger.info("Part Time Employees -> {}", employeeRepository.retrievePartTimeEmployees());
+//		employeeRepository.insert(new FullTimeEmployee("Jack", new BigDecimal("10000")));
+//		employeeRepository.insert(new PartTimeEmployee("Jill", new BigDecimal("50")));
+//		
+////		logger.info("All Employees -> {}", employeeRepository.retrieveAllEmployees());
+//		logger.info("Full Time Employees -> {}", employeeRepository.retrieveFullTimeEmployees());
+//		logger.info("Part Time Employees -> {}", employeeRepository.retrievePartTimeEmployees());
 	}
 
 }
