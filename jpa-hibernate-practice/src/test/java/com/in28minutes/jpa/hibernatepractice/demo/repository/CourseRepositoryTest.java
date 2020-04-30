@@ -48,6 +48,21 @@ public class CourseRepositoryTest {
 	}
 	
 	@Test
+	@Transactional
+	public void findByIdBasicFirstLevelCachingTestCase() {
+		Course course = courseRepository.findById(10001L);
+		logger.info("First Course Retrieved {}", course);
+		//There is no query in the logs between these 2 find methods
+		//course1 is retrieved from the cache
+		//First level cache occurs within the boundaries of a single transaction
+		Course course1 = courseRepository.findById(10001L);
+		logger.info("First Course Retrieved again {}", course1);
+		
+		assertEquals("JPA in 50 Steps", course.getName()); /* Added a static import */
+		assertEquals("JPA in 50 Steps", course1.getName()); /* Added a static import */
+	}
+	
+	@Test
 	@DirtiesContext /* After the test has run, Spring resets the data */
 	public void deleteByIdTestCase() {
 		courseRepository.deleteById(10002L);
