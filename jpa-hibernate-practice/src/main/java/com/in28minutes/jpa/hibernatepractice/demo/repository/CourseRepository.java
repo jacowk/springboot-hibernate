@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.in28minutes.jpa.hibernatepractice.demo.entity.Course;
 import com.in28minutes.jpa.hibernatepractice.demo.entity.Review;
+import com.in28minutes.jpa.hibernatepractice.demo.entity.ReviewRating;
 
 @Repository
 @Transactional
@@ -121,8 +122,8 @@ public class CourseRepository {
 		logger.info("course.getReviews() -> {}", course.getReviews());
 		
 		//add 2 reviews to it
-		Review review1 = new Review("5", "Great Hands-on Stuff.");
-		Review review2 = new Review("5", "Hatsoff.");
+		Review review1 = new Review(ReviewRating.FIVE, "Great Hands-on Stuff.");
+		Review review2 = new Review(ReviewRating.FIVE, "Hatsoff.");
 		
 		//setting the relationship
 		course.addReview(review1);

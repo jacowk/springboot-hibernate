@@ -28,7 +28,7 @@ private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Test
 	public void nativeQueriesBasicTestCase() {
-		List resultList = em.createNativeQuery("select * from course", Course.class).getResultList();
+		List resultList = em.createNativeQuery("select * from course where is_deleted = 0", Course.class).getResultList();
 		logger.info("select * from course -> {}", resultList);
 	}
 	

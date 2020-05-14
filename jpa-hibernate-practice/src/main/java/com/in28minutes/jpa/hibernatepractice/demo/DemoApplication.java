@@ -8,7 +8,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.in28minutes.jpa.hibernatepractice.demo.repository.CourseRepository;
-import com.in28minutes.jpa.hibernatepractice.demo.repository.CourseSpringDataRepository;
 import com.in28minutes.jpa.hibernatepractice.demo.repository.EmployeeRepository;
 import com.in28minutes.jpa.hibernatepractice.demo.repository.StudentRepository;
 
